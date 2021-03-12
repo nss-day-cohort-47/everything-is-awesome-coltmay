@@ -17,7 +17,8 @@ export const LegoDetail = (brick) => {
       `<a href="${link}" target="_blank" style="color:#${invertColor(brick.ColorHex)}">
           ${block}
           <p>${notes}</p>
-          </a>
+      </a>
+      </section>
           `);
     // If link exists and there are no notes, wrap in link
   } else if (link !== "" && notes === "") {
@@ -25,6 +26,7 @@ export const LegoDetail = (brick) => {
       `<a href="${link}" target="_blank" style="color:#${invertColor(brick.ColorHex)}">
       ${block}
       </a>
+      </section>
       `);
     // If link does not exist, but there are notes, append notes.
   } else if (link === "" && notes !== "") {
@@ -32,9 +34,14 @@ export const LegoDetail = (brick) => {
       `
       ${block}
       <p>${notes}</p>
+      </section>
       `);
     // If link does not exist, and notes do not exist, just return block
   } else {
-    return block;
+    return (
+      `
+      ${block}
+      </section>
+      `);
   }
 }
