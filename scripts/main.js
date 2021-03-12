@@ -34,6 +34,7 @@ const startEIA = () => {
 }
 
 startEIA();
+
 // ! TEST CODE -------------------------------------------------------------------
 
 
@@ -42,31 +43,14 @@ startEIA();
 
 
 // ? -----------------------------------------------------------------------------
+// TODO CHECK LIST ---------------------------------------------------------------
+//// - [X] Change the functionality of the `Show Blue Legos` button to show red Legos.
+////  	   Be sure to update your code to reflect this change.
+//// - [X] Add a button that when clicked will display green Legos.
+//// - [X] If a brick has notes, include them on the brick detail.
+//// - [X] Add a `helper function` and invoke it to capitalize the brick name.
+//   - [ ] Add dropdown to the nav area to show specific bricks by material.
+//   - [ ] Add search box that will accept a `LegoId` and display only that Lego.
+//   - [ ] If the `LegoId` is not valid, return "ID not valid".
+//   - [ ] Use enter key on search box.
 // TODO --------------------------------------------------------------------------
-// [X] Change the functionality of the `Show Blue Legos` button to show red Legos.
-//	Be sure to update your code to reflect this change.
-
-// [X]	Add a button that when clicked will display green Legos.
-
-// [X]	If a brick has notes, include them on the brick detail.
-
-// [X] Add a `helper function` and invoke it to capitalize the brick name.
-
-// [ ] Add dropdown to the nav area to show specific bricks by material.
-//	? Brick Materials: 
-//	?	- Solid
-//	?	- Transparent
-//	?	- Pearl
-//	?	- Chrome
-//	?	- Metallic
-//	?	- Milky
-//	?	- Glitter
-//	?	- Speckle
-//	?	- Ink
-//	?	- Process
-//	?	- Modulex
-
-// [ ] Add search box that will accept a `LegoId` and display only that Lego.
-// [ ] If the `LegoId` is not valid, return "ID not valid".
-// [ ]	Use enter key on search box.
-
