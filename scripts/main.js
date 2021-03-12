@@ -14,6 +14,32 @@ navElement.addEventListener("click", (event) => {
 	}
 })
 
+// Function that drives searchbar
+const startSearch = () => {
+	const searchInput = document.getElementById("searchbar").value
+	console.log(searchInput);
+	const filterArray = useLegos().filter(singleLego => {
+		if (singleLego.LegoId === searchInput) {
+			return singleLego;
+		}
+	})
+	makeLegoList(filterArray);
+}
+
+// Event listener that listens for a click on the submit button
+navElement.addEventListener("click", event => {
+	if (event.target.id === "submit") {
+		startSearch();
+	}
+})
+
+// Event listenr that listens for a keydown on enter
+navElement.addEventListener("keypress", function (e) {
+	if (e.key === 'Enter') {
+		startSearch();
+	}
+})
+
 // Event listener that captures a change in the material selector
 navElement.addEventListener("change", (event => {
 	if (event.target.id === "materialSelector") {
@@ -21,6 +47,8 @@ navElement.addEventListener("change", (event => {
 		filterlegoMaterial(material);
 	}
 }))
+
+// Event listener that captures a seach in the searchbox
 
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
@@ -41,7 +69,6 @@ const filterlegoMaterial = (whatFilter) => {
 	makeLegoList(filterArray);
 }
 
-
 const startEIA = () => {
 	loadLegos()
 		.then(legoArray => {
@@ -50,23 +77,3 @@ const startEIA = () => {
 }
 
 startEIA();
-
-// ! TEST CODE -------------------------------------------------------------------
-
-
-// ! -----------------------------------------------------------------------------
-// ? CONSOLE LOGS FOR DEBUGGING --------------------------------------------------
-
-
-// ? -----------------------------------------------------------------------------
-// TODO CHECK LIST ---------------------------------------------------------------
-//// - [X] Change the functionality of the `Show Blue Legos` button to show red Legos.
-////  	   Be sure to update your code to reflect this change.
-//// - [X] Add a button that when clicked will display green Legos.
-//// - [X] If a brick has notes, include them on the brick detail.
-////   - [X] Add a `helper function` and invoke it to capitalize the brick name.
-//// - [X] Add dropdown to the nav area to show specific bricks by material.
-//   - [ ] Add search box that will accept a `LegoId` and display only that Lego.
-//   - [ ] If the `LegoId` is not valid, return "ID not valid".
-//   - [ ] Use enter key on search box.
-// TODO --------------------------------------------------------------------------
