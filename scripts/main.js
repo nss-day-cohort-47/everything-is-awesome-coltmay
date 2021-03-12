@@ -1,7 +1,6 @@
 console.log("hello beautiful")
 import { loadLegos, useLegos } from './legos/LegoData.js'
 import { makeLegoList } from './legos/LegoList.js';
-import {capitalizeName} from './helpers.js';
 
 const navElement = document.querySelector("nav");
 
@@ -15,9 +14,27 @@ navElement.addEventListener("click", (event) => {
 	}
 })
 
+// Event listener that captures a change in the material selector
+navElement.addEventListener("change", (event => {
+	if (event.target.id === "materialSelector") {
+		const material = event.target.value;
+		filterlegoMaterial(material);
+	}
+}))
+
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
 		if (singleLego.LegoName.includes(whatFilter)) {
+			return singleLego;
+		}
+	})
+	makeLegoList(filterArray);
+}
+
+// New filter that looks for the value of the Material property in the object
+const filterlegoMaterial = (whatFilter) => {
+	const filterArray = useLegos().filter(singleLego => {
+		if (singleLego.Material.includes(whatFilter)) {
 			return singleLego;
 		}
 	})
@@ -28,12 +45,12 @@ const filterLegos = (whatFilter) => {
 const startEIA = () => {
 	loadLegos()
 		.then(legoArray => {
-			capitalizeName(legoArray)
 			makeLegoList(legoArray)
 		})
 }
 
 startEIA();
+
 // ! TEST CODE -------------------------------------------------------------------
 
 
@@ -42,31 +59,14 @@ startEIA();
 
 
 // ? -----------------------------------------------------------------------------
+// TODO CHECK LIST ---------------------------------------------------------------
+//// - [X] Change the functionality of the `Show Blue Legos` button to show red Legos.
+////  	   Be sure to update your code to reflect this change.
+//// - [X] Add a button that when clicked will display green Legos.
+//// - [X] If a brick has notes, include them on the brick detail.
+////   - [X] Add a `helper function` and invoke it to capitalize the brick name.
+//// - [X] Add dropdown to the nav area to show specific bricks by material.
+//   - [ ] Add search box that will accept a `LegoId` and display only that Lego.
+//   - [ ] If the `LegoId` is not valid, return "ID not valid".
+//   - [ ] Use enter key on search box.
 // TODO --------------------------------------------------------------------------
-// [X] Change the functionality of the `Show Blue Legos` button to show red Legos.
-//	Be sure to update your code to reflect this change.
-
-// [X]	Add a button that when clicked will display green Legos.
-
-// [X]	If a brick has notes, include them on the brick detail.
-
-// [X] Add a `helper function` and invoke it to capitalize the brick name.
-
-// [ ] Add dropdown to the nav area to show specific bricks by material.
-//	? Brick Materials: 
-//	?	- Solid
-//	?	- Transparent
-//	?	- Pearl
-//	?	- Chrome
-//	?	- Metallic
-//	?	- Milky
-//	?	- Glitter
-//	?	- Speckle
-//	?	- Ink
-//	?	- Process
-//	?	- Modulex
-
-// [ ] Add search box that will accept a `LegoId` and display only that Lego.
-// [ ] If the `LegoId` is not valid, return "ID not valid".
-// [ ]	Use enter key on search box.
-
