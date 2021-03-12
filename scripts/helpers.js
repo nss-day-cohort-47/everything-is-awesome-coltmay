@@ -25,9 +25,9 @@ function padZero(str, len) {
 	return (zeros + str).slice(-len);
 }
 
-export const capitalizeName = (legoArray) => {
-	for (const lego of legoArray) {
-		lego.LegoName = lego.LegoName.toUpperCase()
-	}
-	return legoArray;
-}
+// export const capitalizeName = (legoArray) => {
+// 	for (const lego of legoArray) {
+// 		lego.LegoName = lego.LegoName.toUpperCase()
+// 	}
+// 	return legoArray;
+// }
